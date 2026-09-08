@@ -103,3 +103,13 @@ themeToggle.addEventListener('click', () => {
 
 // Initialize
 createBoard();
+
+// Toggle Colourful Mode
+colorToggle.addEventListener('click', () => {
+    isColorful = !isColorful;
+    colorToggle.innerText = isColorful ? '⚪ Standard Mode' : '🎨 Colourful Mode';
+    createBoard(); 
+});
+
+// Re-draw the board if the user resizes their window!
+window.addEventListener('resize', createBoard);
