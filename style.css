@@ -17,13 +17,14 @@ body.dark-mode {
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', cursive; /* Fun font! */
     margin: 0;
     padding: 20px;
     transition: background-color 0.3s, color 0.3s;
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh; /* Fills screen height */
 }
 
 header {
@@ -61,8 +62,9 @@ body.dark-mode #theme-toggle {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
     gap: 10px;
-    width: 100%;
-    max-width: 800px;
+    width: 100%; /* Removes the max-width restriction */
+    flex-grow: 1; /* Stretches to fill leftover space */
+    align-content: start;
 }
 
 .bubble {
