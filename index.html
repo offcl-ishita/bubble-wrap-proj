@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Bubble Wrap</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="controls">
+            <button id="theme-toggle">🌙 Dark Mode</button>
+            <button id="refill-btn">🔄 Refill Board</button>
+        </div>
+        <div class="stats">
+            <p>Popped: <span id="pop-count">0</span></p>
+            <p>Treasures Found: <span id="treasure-stash">None yet...</span></p>
+        </div>
+    </header>
+
+    <main id="bubble-board"></main>
+
+    <!-- Audio element for the pop sound -->
+    <audio id="pop-sound" src="pop.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
