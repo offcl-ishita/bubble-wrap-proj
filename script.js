@@ -4,7 +4,8 @@ const popCountDisplay = document.getElementById('pop-count');
 const treasureStashDisplay = document.getElementById('treasure-stash');
 const themeToggle = document.getElementById('theme-toggle');
 const refillBtn = document.getElementById('refill-btn');
-
+const colorToggle = document.getElementById('color-toggle');
+let isColorful = false;
 // Easter Egg Treasures!
 const treasures = ['🗡️', '🍬', '🦆', '💎', '🍕', '🎸', '👽'];
 let popCount = 0;
@@ -13,15 +14,26 @@ const TOTAL_BUBBLES = 60;
 
 // Generate the bubbles
 function createBoard() {
-    board.innerHTML = ''; // Clear board
-    for (let i = 0; i < TOTAL_BUBBLES; i++) {
+    board.innerHTML = ''; 
+    
+    // Math to figure out how many bubbles fit on your exact screen!
+    const bubbleSize = 70; // 60px width + 10px gap
+    const cols = Math.floor(window.innerWidth / bubbleSize);
+    const rows = Math.floor((window.innerHeight - 150) / bubbleSize); 
+    const totalBubbles = cols * rows;
+
+    for (let i = 0; i < totalBubbles; i++) {
         const bubble = document.createElement('div');
         bubble.classList.add('bubble');
         
-        // 10% chance to hide a treasure in this bubble
+        // Colourful Mode Logic
+        if (isColorful) {
+            bubble.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 75%)`;
+            bubble.style.borderColor = 'transparent';
+        }
+
         if (Math.random() < 0.1) {
-            const randomTreasure = treasures[Math.floor(Math.random() * treasures.length)];
-            bubble.dataset.treasure = randomTreasure;
+            bubble.dataset.treasure = treasures[Math.floor(Math.random() * treasures.length)];
         }
         
         board.appendChild(bubble);
