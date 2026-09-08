@@ -13,25 +13,27 @@ let foundTreasures = [];
 const TOTAL_BUBBLES = 60; 
 
 // Generate the bubbles
+// A list of bright arcade hues
+const hues = [0, 30, 60, 90, 180, 240, 280, 320]; 
+
 function createBoard() {
     board.innerHTML = ''; 
     
-    // Math to figure out how many bubbles fit on your exact screen!
-    const bubbleSize = 70; // 60px width + 10px gap
+    // Tight packing math!
+    const bubbleSize = 55; // Matches CSS width
     const cols = Math.floor(window.innerWidth / bubbleSize);
-    const rows = Math.floor((window.innerHeight - 150) / bubbleSize); 
-    const totalBubbles = cols * rows;
+    const rows = Math.floor(window.innerHeight / bubbleSize); 
+    const totalBubbles = cols * (rows + 2); // Adds a few extra rows to ensure no gaps at the bottom
 
     for (let i = 0; i < totalBubbles; i++) {
         const bubble = document.createElement('div');
         bubble.classList.add('bubble');
         
-        // Colourful Mode Logic
-        if (isColorful) {
-            bubble.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 75%)`;
-            bubble.style.borderColor = 'transparent';
-        }
+        // Apply the 3D glossy gradient using a random color!
+        const randomHue = hues[Math.floor(Math.random() * hues.length)];
+        bubble.style.background = `radial-gradient(circle at 30% 30%, hsl(${randomHue}, 100%, 75%), hsl(${randomHue}, 100%, 45%))`;
 
+        // 10% chance for treasure
         if (Math.random() < 0.1) {
             bubble.dataset.treasure = treasures[Math.floor(Math.random() * treasures.length)];
         }
