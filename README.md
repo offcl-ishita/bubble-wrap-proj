@@ -7,7 +7,7 @@
 A fun, useless, and surprisingly addictive interactive web toy built for the **"Build a Web Toy"** challenge. Sometimes you just need to turn your brain off and pop some virtual bubble wrap. 
 
 ## 🎮 Live Demo
-[**Click here to play with the Bubble Wrap Toy!**](#) *(Replace this # with your GitHub Pages URL once it's live!)*
+[**Click here to play with the Bubble Wrap Toy!**](https://offcl-ishita.github.io/bubble-wrap-proj/) *(Replace this # with your GitHub Pages URL once it's live!)*
 
 ## ✨ Features & Interactions
 This project was built to satisfy the core challenge requirements by including at least 3 meaningful user interactions, plus a bunch of bonus features!
