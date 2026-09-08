@@ -1,38 +1,37 @@
-:root {
-    --bg-color: #f4f4f9;
-    --text-color: #333;
-    --bubble-color: rgba(255, 255, 255, 0.8);
-    --bubble-border: rgba(200, 200, 200, 0.5);
-    --bubble-shadow: 0 4px 6px rgba(0,0,0,0.1), inset 0 -4px 10px rgba(0,0,0,0.1);
-}
-
-body.dark-mode {
-    --bg-color: #1a1a1a;
-    --text-color: #f4f4f9;
-    --bubble-color: rgba(60, 60, 60, 0.8);
-    --bubble-border: rgba(40, 40, 40, 0.5);
-    --bubble-shadow: 0 4px 6px rgba(0,0,0,0.5), inset 0 -4px 10px rgba(0,0,0,0.5);
-}
-
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Comic Sans MS', 'Chalkboard SE', cursive; /* Fun font! */
+    background-color: #ff33eb; /* Hot magenta pink! */
+    font-family: 'Impact', 'Arial Black', sans-serif;
     margin: 0;
-    padding: 20px;
-    transition: background-color 0.3s, color 0.3s;
+    overflow: hidden; /* Prevents scrollbars so bubbles fill exactly */
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh; /* Fills screen height */
+    height: 100vh;
 }
 
 header {
     width: 100%;
-    max-width: 600px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    text-align: center;
+    z-index: 10; /* Keeps text above bubbles */
+    position: absolute;
+    pointer-events: none; /* Lets you click bubbles behind the text */
+}
+
+.game-title {
+    font-size: 3.5rem;
+    color: white;
+    font-style: italic;
+    text-transform: uppercase;
+    -webkit-text-stroke: 3px #a200ff; /* Purple outline */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+    margin: 10px 0;
+    line-height: 1;
+}
+
+.controls, .stats {
+    pointer-events: auto; /* Re-enables clicking on buttons */
+    color: white;
+    text-shadow: 1px 1px 2px black;
 }
 
 button {
@@ -44,61 +43,51 @@ button {
     background-color: #4CAF50;
     color: white;
     transition: transform 0.1s;
+    margin: 5px;
 }
 
 button:active {
     transform: scale(0.95);
 }
 
-#theme-toggle {
-    background-color: #333;
-}
-body.dark-mode #theme-toggle {
-    background-color: #ddd;
-    color: #333;
-}
-
 #bubble-board {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-    gap: 10px;
-    width: 100%; /* Removes the max-width restriction */
-    flex-grow: 1; /* Stretches to fill leftover space */
-    align-content: start;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    align-content: flex-start;
 }
 
 .bubble {
-    width: 60px;
-    height: 60px;
+    width: 55px; /* Slightly smaller to pack them in */
+    height: 55px;
     border-radius: 50%;
-    background-color: var(--bubble-color);
-    border: 1px solid var(--bubble-border);
-    box-shadow: var(--bubble-shadow);
     cursor: pointer;
-    position: relative;
+    box-shadow: inset -5px -5px 15px rgba(0,0,0,0.3), 2px 2px 5px rgba(0,0,0,0.2);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
-    transition: transform 0.1s, box-shadow 0.1s;
+    transition: transform 0.1s;
     user-select: none;
 }
 
-.bubble:active:not(.popped) {
-    transform: scale(0.9);
+.bubble:active {
+    transform: scale(0.8);
 }
 
 .bubble.popped {
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
-    background-color: transparent;
-    cursor: default;
-    transform: scale(0.95);
+    opacity: 0; /* Makes them disappear instead of just turning grey */
+    transform: scale(1.5); /* Pops outward */
+    transition: all 0.2s ease-out;
 }
 
-/* Animation for the treasure floating up */
+/* Keeps the treasure animation intact */
 .treasure-anim {
     animation: floatUp 1s ease-out forwards;
     position: absolute;
+    z-index: 20;
 }
 
 @keyframes floatUp {
