@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bubble Wrap Popping!</title>
@@ -9,10 +10,17 @@
 <body>
     <header>
         <h1 class="game-title">BUBBLE WRAP POPPING!</h1>
+        
+        <!-- All your clickable buttons -->
         <div class="controls">
             <button id="refill-btn">🔄 Refill Board</button>
+            <button id="theme-btn">🌙 Dark Mode</button>
+            <button id="start-btn">⏱️ Start Time Attack</button>
         </div>
+        
+        <!-- All your game stats -->
         <div class="stats">
+            <div id="timer-display">Time: 60s</div>
             <p>Popped: <span id="pop-count">0</span></p>
             <p>Treasures Found: <span id="treasure-stash">None yet...</span></p>
         </div>
@@ -21,7 +29,6 @@
     <!-- IF THIS LINE IS MISSING, NO BUBBLES WILL LOAD! -->
     <main id="bubble-board"></main>
 
-    <audio id="pop-sound" src="pop.mp3"></audio>
     <script src="script.js"></script>
 </body>
 </html>
