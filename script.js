@@ -1,5 +1,5 @@
+const popAudio = new Audio('pop.mp3');
 const board = document.getElementById('bubble-board');
-const popSound = document.getElementById('pop-sound');
 const popCountDisplay = document.getElementById('pop-count');
 const treasureStashDisplay = document.getElementById('treasure-stash');
 const refillBtn = document.getElementById('refill-btn');
@@ -48,9 +48,9 @@ board.addEventListener('click', (e) => {
         popCountDisplay.innerText = popCount;
 
         // Play sound if you uploaded pop.mp3!
-        if (popSound) {
-            popSound.currentTime = 0;
-            popSound.play().catch(() => {}); // Prevents errors if sound is missing
+        if (popAudio) {
+            popAudio.currentTime = 0;
+            popAudio.play().catch(() => {}); // Prevents errors if sound is missing
         }
 
         // Trigger Easter Egg Treasure
