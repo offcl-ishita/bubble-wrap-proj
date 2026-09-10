@@ -96,11 +96,26 @@ button:active {
     100% { transform: translateY(-50px) scale(1); opacity: 0; }
 }
 
+/* --- UPGRADED DARK MODE --- */
 body.dark-mode {
-    background: #111; /* Dark background */
-    color: #0ff;      /* Neon cyan text */
+    background-color: #111 !important; /* !important forces it to change */
 }
 
+/* Force the title to turn neon cyan and blue */
+body.dark-mode .game-title {
+    color: #0ff;
+    -webkit-text-stroke: 3px #0055ff;
+    text-shadow: 0 0 20px #0ff;
+}
+
+/* Force the stats and text to glow */
+body.dark-mode .controls, 
+body.dark-mode .stats {
+    color: #0ff;
+    text-shadow: 0 0 8px #0ff;
+}
+
+/* Give the bubbles a heavy neon glow to contrast the dark background */
 body.dark-mode .bubble {
-    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff; /* Neon Glow */
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, inset -5px -5px 15px rgba(0,0,0,0.8) !important;
 }
